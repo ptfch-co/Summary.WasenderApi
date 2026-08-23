@@ -1,0 +1,13 @@
+@model ActivityViewModel<Summary.WASenderApi.Workflows.Task.Group.Send.SendGroupMessageInWASenderApiTask>
+@using Core.Workflows.Helpers
+@using Core.Workflows.ViewModels
+@using Summary.WASenderApi
+
+<header>
+    <h4>
+        @Model.Activity.GetTitleOrDefault(() => T[WASenderApi.Localize.SOfSendGroupMessage])
+    </h4>
+    <em>
+        &quot;WASenderApi - Send Group Message&quot;
+    </em>
+</header>

@@ -9,6 +9,8 @@ namespace Summary.WASenderApi
     using Core.Settings;
     using Summary.WASenderApi.Services;
     using Summary.WASenderAPI.Services;
+    using Summary.WASenderApi.Workflows.Task.Group.Send;
+    using Summary.WASenderApi.Workflows.Task.Channel.Send;
 
     [Feature(WASenderApi.Features.WASenderApi)]
     public class Startup : StartupBase
@@ -22,6 +24,10 @@ namespace Summary.WASenderApi
             services.AddScoped<IDisplayDriver<ISite>, WASenderApiSettingsDisplayDriver>();
             services.AddScoped<IGroupService, GroupService>();
             services.AddScoped<ISessionService, SessionService>();
+
+            services.AddActivity<SendMessageInWASenderApiTask, SendMessageInWASenderApiTaskDisplay>();
+            services.AddActivity<SendGroupMessageInWASenderApiTask, SendGroupMessageInWASenderApiDisplay>();
+            services.AddActivity<SendChannelMessageInWASenderApiTask, SendChannelMessageInWASenderApiDisplay>();
 
             services.AddTransient<IConfigureOptions<WASenderApiSettings>, WASenderApiSettingsConfiguration>();
         }

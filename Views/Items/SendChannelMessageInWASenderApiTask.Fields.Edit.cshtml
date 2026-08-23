@@ -1,0 +1,47 @@
+@model Summary.WASenderApi.Workflows.Task.Channel.Send.SendChannelMessageInWASenderApiViewModel
+
+@inject Microsoft.Extensions.Options.IOptions<Summary.WASenderApi.WASenderApiSettings> Options
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group" asp-validation-class-for="Token">
+            <label asp-for="Token">توکن</label>
+            <input type="text" asp-for="Token" class="form-control" placeholder="@Options.Value.Token" />
+            <span class="hint">
+                توکن حسابی که در سامانه WASenderApi.ir ایجاد و به حساب شما متصل شده است را در این قسمت وارد کنید.
+            </span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group" asp-validation-class-for="To">
+            <label asp-for="To">
+                ارسال به کانال
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" asp-for="To" class="form-control" />
+            <span class="hint"> شناسه کانال Whatsapp که قصد دارید پیغام برای آن ارسال شود را درج
+                نمایید.</span>
+        </div>
+        <div class="form-group" asp-validation-class-for="Message">
+            <label asp-for="Message">
+                متن پیام
+                <span class="text-danger">*</span>
+            </label>
+            <textarea rows="7" asp-for="Message" class="form-control"></textarea>
+            <span class="hint">متن پیغامی که قصد دارید برای کانال Whatsapp ارسال شود را در این
+                فیلد درج نمایید.</span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group" asp-validation-class-for="File">
+            <label asp-for="File">
+                لینک فایل
+            </label>
+            <input type="text" asp-for="File" class="form-control" />
+            <span class="hint">
+                در این فیلد لینک مستقیم فایل مورد نظر جهت ارسال به مخاطب را وارد کنید. لطفاً تنها لینک فایل درج شود و از
+                ثبت سایر لینک‌های وب خودداری نمایید.
+            </span>
+        </div>
+    </div>
+</div>

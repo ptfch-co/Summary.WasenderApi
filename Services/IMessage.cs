@@ -57,23 +57,9 @@ namespace Summary.WASenderApi.Services
 
             ThrowExceptionIf.TokenIsEmpty(token);
 
-            // در صورت ورود به شرط، یعنی که نام گروه وارد شده است
-            if (to.IsMobileNo() is false)
+            if (to.IsMobileNo())
             {
-                var groups = await _group.GetGroupsAsync(token);
-
-                to = groups.FirstOrDefault(g => g.Name == to)?.Id ?? throw new WorkflowException(
-                    $" گروهی با عنوان «{to}» در پنل Whatsapp یافت شد.",
-                    null,
-                    to,
-                    "ابتدا اطمینان حاصل کنید که خطا ناشی از ثبت نادرست شماره تلفن همراه نباشد. سپس بررسی نمایید شماره‌ای که قصد ارسال پیام با آن را دارید در گروه(های) مورد نظر عضو باشد. در صورت عضویت، یک‌بار از گروه‌(ها) خارج شده و مجدداً Join شوید. با انجام این مراحل، اتصال سامری با گروه واتساپ به‌درستی برقرار خواهد شد."
-                );
-            }
-
-            else
-            {
-                // Normalize the mobile number before processing
-                to = to.RemoveMobilePrefixNo("98");
+               to = to.RemoveMobilePrefixNo("98");
             }
 
             message = message.ConvertHtmlToWhatsappFormat();

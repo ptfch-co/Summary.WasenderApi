@@ -1,0 +1,21 @@
+@model Summary.WASenderApi.WASenderApiSettings
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="ApiIsAlive">وضعیت سرویس</label>
+            <select asp-for="ApiIsAlive" class="form-control">
+				        <option value="true">فعال</option>
+				        <option value="false">غیرفعال</option>
+            </select>
+            <span class="hint">در صورتیکه قصد دارید هیچ یک از تسک‌های مرتبط با این ماژول فراخوانی نشوند پیشنهاد میگردد وضعیت سرویس را بر روی غیرفعال تنظیم نمایید. این قابلیت زمانی کاربردی است که به دلایلی اینترنت ملی شود و یا اینکه سامانه WASender از دسترسی خارج گردد. سیستم نود NotExist تسک را فراخوانی میکند.</span>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="form-group">
+            <label asp-for="Token">توکن</label>
+            <input class="form-control" type="text" asp-for="Token" />
+            <span class="hint">توکن حسابی را که به سامانه https://www.WASenderApi.com متصل کرده‌اید در این فیلد قرار دهید.</span>
+        </div>
+    </div>
+</div>

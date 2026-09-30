@@ -57,10 +57,7 @@ namespace Summary.WASenderApi.Services
 
             ThrowExceptionIf.TokenIsEmpty(token);
 
-            if (to.IsMobileNo())
-            {
-               to = to.RemoveMobilePrefixNo("98");
-            }
+            if (to.IsMobileNo()) to = to.RemoveMobilePrefixNo("98");
 
             message = message.ConvertHtmlToWhatsappFormat();
 
